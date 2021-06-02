@@ -5,7 +5,8 @@
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Digital & Electronics</span></li>
+                <li class="item-link"><span>Product Categories</span></li>
+                <li class="item-link"><span>{{$category_name}}</span></li>
             </ul>
         </div>
         <div class="row">
@@ -20,7 +21,7 @@
 
                 <div class="wrap-shop-control">
 
-                    <h1 class="shop-title">Digital & Electronics</h1>
+                    <h1 class="shop-title">{{$category_name}}</h1>
 
                     <div class="wrap-right">
 
@@ -161,7 +162,7 @@
                             <li class="list-item"><a class="filter-link " href="#">xl</a></li>
                         </ul>
                         <div class="widget-banner">
-                            <figure><img src="{{asset('assets/images/size-banner-widget')}}.jpg" width="270" height="331" alt=""></figure>
+                            <figure><img src="{{asset('assets/images/size-banner-widget.jpg')}}" width="270" height="331" alt=""></figure>
                         </div>
                     </div>
                 </div><!-- Size -->
