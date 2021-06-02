@@ -76,6 +76,9 @@
 													<li class="menu-item" >
 														<a title="DashBoard" href="{{ route('admin.dashboard') }}">DashBoard</a>
 													</li>
+													<li class="menu-item">
+														<a title="Categories" href="{{route('admin.categories')}}">Categories</a>
+													</li>
 													<li class="menu-item" >
 														<a title="DashBoard" href="{{ route('logout') }} " onclick="event.preventDefault(); document.getElementById('logout-form').submit()">logout</a>
 													</li>
