@@ -15,6 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }} ">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }} ">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }} ">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
 	@yield('link')
     @livewireStyles
 </head>
@@ -84,6 +86,12 @@
 													</li>
 													<li class="menu-item">
 														<a title="Manage Home Slider" href="{{route('admin.homeslider')}}">Manage Home Slider</a>
+													</li>
+													<li class="menu-item">
+														<a title="Manage Home Categories"href="{{route('admin.homecategories')}}">Manage Home Categories</a>
+													</li>
+													<li class="menu-item">
+														<a title="Sale Setting" href="{{route('admin.sale')}}">Sale Setting</a>
 													</li>
 													<li class="menu-item" >
 														<a title="DashBoard" href="{{ route('logout') }} " onclick="event.preventDefault(); document.getElementById('logout-form').submit()">logout</a>
@@ -471,7 +479,10 @@
 	<script src=" {{ asset('assets/js/jquery.countdown.min.js')}} "></script>
 	<script src=" {{ asset('assets/js/jquery.sticky.js')}} "></script>
 	<script src=" {{ asset('assets/js/functions.js')}} "></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha512-GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFaioypzbDOQykoRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	@yield('scripts')
     @livewireScripts
+	@stack('scripts')
 </body>
 </html>
