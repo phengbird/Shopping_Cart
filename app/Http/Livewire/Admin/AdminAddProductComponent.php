@@ -18,7 +18,7 @@ class AdminAddProductComponent extends Component
     public $description;
     public $regular_price;
     public $sale_price;
-    public $SKU;
+    public $sku;
     public $stock_status;
     public $featured;
     public $quantity;
@@ -36,8 +36,40 @@ class AdminAddProductComponent extends Component
         $this->slug = Str::slug($this->name,'-');
     }
 
+    public function updated($feilds)
+    {
+        $this->validateOnly($feilds,[
+            'name' => 'required',
+            'slug' => 'required|unique:categories',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'sku' => 'required',
+            'stock_status' => 'required',
+            'featured' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,png',
+            'category_id' => 'required'
+        ]);
+    }
+
     public function addProduct()
     {
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:categories',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'sku' => 'required',
+            'stock_status' => 'required',
+            'featured' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,png',
+            'category_id' => 'required'
+        ]);
         $product = new Product();
         $product->name = $this->name;
         $product->slug = $this->slug;
@@ -45,7 +77,7 @@ class AdminAddProductComponent extends Component
         $product->description = $this->description;
         $product->regular_price = $this->regular_price;
         $product->sale_price = $this->sale_price;
-        $product->SKU = $this->SKU;
+        $product->SKU = $this->sku;
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
