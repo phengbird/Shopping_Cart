@@ -90,6 +90,7 @@ class CartComponent extends Component
     public function removeCoupon(){
         session()->forget('coupon');
     }
+    
     public function calculateDiscount(){
         if(session()->has('coupon')){
             if(session()->get('coupon')['type']=='fixed'){
@@ -103,6 +104,37 @@ class CartComponent extends Component
         }
     }
 
+    public function checkout(){
+        if(auth()->check()){
+            return redirect()->route('checkout');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function setAmountForCheckout(){
+        if(!Cart::instance('cart')->count() > 0){
+            session()->forget('checkout');
+            return;
+        }
+
+        if(session()->has('coupon')){
+            session()->put('checkout',[
+                'discount'=>$this->discount,
+                'subtotal'=>$this->subTotalAfterDiscount,
+                'tax'=>$this->taxAfterDiscount,
+                'total'=>$this->totalAfterDiscount,
+            ]);
+        } else {
+            session()->put('checkout',[
+                'discount'=>0,
+                'subtotal'=>Cart::instance('cart')->subtotal(),
+                'tax'=>Cart::instance('cart')->tax(),
+                'total'=>Cart::instance('cart')->total(),
+            ]);
+        }
+    }
+
     public function render()
     {
         if(session()->has('coupon')){
@@ -112,6 +144,7 @@ class CartComponent extends Component
                 $this->calculateDiscount();
             }
         }
+        $this->setAmountForCheckout();
         return view('livewire.cart-component')->layout('layouts.base');
     }
 }
