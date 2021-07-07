@@ -13,7 +13,7 @@ class AdminSaleComponent extends Component
 
     public function mount()
     {
-        $sale = Sale::get()->first();
+        $sale = Sale::first();
         $this->sale_date = $sale->sale_date;
         $this->status = $sale->status;
         $this->sale_id = $sale->id;
