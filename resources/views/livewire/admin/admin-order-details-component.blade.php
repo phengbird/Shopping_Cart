@@ -168,33 +168,34 @@
             </div>
         @endif
     
+        @if ($Order->transaction)
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Transaction
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <th>Transaction Mode</th>
+                                    <td>{{$Order->transaction->mode}}</td>
+                                </tr>
+            
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{$Order->transaction->status}}</td>
+                                </tr>
         
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Transaction
-                    </div>
-                    <div class="panel-body">
-                        <table class="table">
-                            <tr>
-                                <th>Transaction Mode</th>
-                                <td>{{$Order->transaction->mode}}</td>
-                            </tr>
-        
-                            <tr>
-                                <th>Status</th>
-                                <td>{{$Order->transaction->status}}</td>
-                            </tr>
-    
-                            <tr>
-                                <th>Transaction Date</th>
-                                <td>{{$Order->transaction->created_at}}</td>
-                            </tr>
-                        </table>
+                                <tr>
+                                    <th>Transaction Date</th>
+                                    <td>{{$Order->transaction->created_at}}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>

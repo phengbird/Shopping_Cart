@@ -28,6 +28,7 @@ use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserDashBoardComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserOrdersDetailsComponent;
+use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\WishlistComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -56,8 +57,13 @@ Route::get('/product_category/{category_slug}',CategoryComponent::class)->name('
 // for user or customer
 Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('/user/dashboard',UserDashBoardComponent::class)->name('user.dashboard');
+
+    //orders
     Route::get('/user/orders',UserOrdersComponent::class)->name('user.orders');
     Route::get('/user/orders/details/{id}',UserOrdersDetailsComponent::class)->name('user.orderdetails');
+
+    //review
+    Route::get('/user/review/{id}',UserReviewComponent::class)->name('user.review');
 });
 
 // for admin
