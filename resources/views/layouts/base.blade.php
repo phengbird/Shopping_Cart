@@ -99,6 +99,9 @@
 													<li class="menu-item">
 														<a title="All Orders" href="{{route('admin.orders')}}">All Orders</a>
 													</li>
+													<li class="menu-item">
+														<a title="Contact Message" href="{{route('admin.contact')}}">Contact Message</a>
+													</li>
 													<li class="menu-item" >
 														<a title="DashBoard" href="{{ route('logout') }} " onclick="event.preventDefault(); document.getElementById('logout-form').submit()">logout</a>
 													</li>
@@ -117,6 +120,9 @@
 													</li>
 													<li class="menu-item">
 														<a title="My Orders" href="{{route('user.orders')}}">My Orders</a>
+													</li>
+													<li class="menu-item" >
+														<a title="DashBoard" href="{{ route('user.changepassword') }}">Change Password</a>
 													</li>
 													<li class="menu-item" >
 														<a title="DashBoard" href="{{ route('logout') }} " onclick="event.preventDefault(); document.getElementById('logout-form').submit()">logout</a>

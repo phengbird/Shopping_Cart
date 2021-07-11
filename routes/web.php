@@ -5,6 +5,7 @@ use App\Http\Livewire\Admin\AdminAddCouponsComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminDashBoardComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
 use App\Http\Livewire\Admin\AdminEditHomeSliderComponent;
@@ -20,11 +21,13 @@ use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\CheckoutComponent;
+use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserDashBoardComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserOrdersDetailsComponent;
@@ -46,6 +49,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',HomeComponent::class);
 Route::get('/shop',ShopComponent::class);
 Route::get('/cart',CartComponent::class)->name('product.cart');
+Route::get('/contact-us',ContactComponent::class)->name('contact');
 Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 Route::get('/thankyou',ThankyouComponent::class)->name('thankyou');
 Route::get('/search',SearchComponent::class)->name('product.search');
@@ -57,6 +61,7 @@ Route::get('/product_category/{category_slug}',CategoryComponent::class)->name('
 // for user or customer
 Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('/user/dashboard',UserDashBoardComponent::class)->name('user.dashboard');
+    Route::get('/user/change-password',UserChangePasswordComponent::class)->name('user.changepassword');
 
     //orders
     Route::get('/user/orders',UserOrdersComponent::class)->name('user.orders');
@@ -71,6 +76,7 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function (){
     //home
     Route::get('/admin/dashboard',AdminDashBoardComponent::class)->name('admin.dashboard');
     Route::get('/admin/homecategories',AdminHomeCategoryComponent::class)->name('admin.homecategories');
+    Route::get('/admin/contact',AdminContactComponent::class)->name('admin.contact');
     
     //category
     Route::get('/admin/categories',AdminCategoryComponent::class)->name('admin.categories');
