@@ -21,11 +21,21 @@
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
                     <div class="detail-media">
-                        <div class="product-gallery">
+                        <div class="product-gallery" wire:ignore>
                           <ul class="slides">
                             <li data-thumb="{{asset('assets/images/products')}}/{{$product->image}}">
                                 <img src="{{asset('assets/images/products')}}/{{$product->image}}" alt="{{$product->name}}" />
                             </li>
+                            @php
+                                $images = explode(",",$product->images)
+                            @endphp
+                            @foreach ($images as $image)
+                                @if ($image)
+                                    <li data-thumb="{{asset('assets/images/products')}}/{{$image}}">
+                                        <img src="{{asset('assets/images/products')}}/{{$image}}" alt="{{$product->name}}" />
+                                    </li>
+                                @endif
+                            @endforeach
                           </ul>
                         </div>
                     </div>
@@ -79,7 +89,7 @@
                             <span>Quantity:</span>
                             <div class="quantity-input">
                                 <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" wire:model='Quantity'>
-                                <a class="btn btn-reduce" href="" wire::click.prevent="decreaseQuantity"></a>
+                                <a class="btn btn-reduce" href="" wire:click.prevent="decreaseQuantity"></a>
                                 <a class="btn btn-increase" href="" wire:click.prevent="increaseQuantity"></a>
                             </div>
                         </div>
@@ -222,7 +232,7 @@
                     <div class="widget-content">
                         <ul class="products">
                             @foreach ($popular_product as $product)
-                                <li class="product-item">
+                                <li class="product-item" wire:ignore>
                                     <div class="product product-widget-style">
                                         <div class="thumbnnail">
                                             <a href="{{route('product.details',['slug' => $product->slug] )}}" title="{{$product->name}}">
