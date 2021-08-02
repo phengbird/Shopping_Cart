@@ -13,6 +13,16 @@ class AdminProductComponent extends Component
     public function deleteProduct($id)
     {
         $product = Product::find($id);
+        if($product->images) {
+            $images = explode(',',$product->images);
+            
+            foreach($images as $image) 
+                unlink('assets/images/products/'.$image);
+        }
+        if($product->image) {
+            unlink('assets/images/products/'.$product->image);
+        }
+
         $product->delete();
         session()->flash('message','Product has been deleted');
     }

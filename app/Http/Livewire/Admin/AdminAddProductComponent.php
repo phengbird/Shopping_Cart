@@ -71,6 +71,7 @@ class AdminAddProductComponent extends Component
             'image' => 'required|mimes:jpeg,png',
             'category_id' => 'required'
         ]);
+
         $product = new Product();
         $product->name = $this->name;
         $product->slug = $this->slug;
@@ -88,13 +89,16 @@ class AdminAddProductComponent extends Component
         $product->image = $imageName;
         
         if($this->images) {
-            $imagesName = '';
+            $imagename = '';
             foreach($this->images as $key=>$image) {
                 $imgName = Carbon::now()->timestamp.$key.'.'.$image->extension();
                 $image->storeAs('products',$imgName);
-                $imagesName = $imagesName.','.$imgName;
+                if($key == 0)
+                    $imagename = $imgName;
+                else
+                    $imagename = $imagename.','.$imgName;
             }
-            $product->images = $imagesName;
+            $product->images = $imagename;
         }
 
         $product->category_id = $this->category_id;

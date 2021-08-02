@@ -10,4 +10,8 @@ class HomeCategory extends Model
     use HasFactory;
 
     protected $table = 'home_categories';
+
+    protected $fillable = [
+        'sel_categories','No_of_products'
+    ];
 }

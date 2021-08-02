@@ -20,10 +20,14 @@ class AdminHomeCategoryComponent extends Component
 
     public function updateHomeCategory()
     {
-        $category = HomeCategory::find(1);
-        $category->sel_categories = implode(',',$this->select_categories);
-        $category->No_of_products = $this->numberofproducts;
-        $category->save();
+        $category = HomeCategory::first();
+        $category->update([
+            'sel_categories'=>implode(',',$this->select_categories),
+            'No_of_products'=>$this->numberofproducts,
+        ]);
+        // $category->sel_categories = implode(',',$this->select_categories);
+        // $category->No_of_products = $this->numberofproducts;
+        // $category->save();
         session()->flash('message','Category has been updated');
     }
 
